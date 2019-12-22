@@ -59,7 +59,7 @@ export default {
             this.spotify.getMyCurrentPlayingTrack().then(track => {
                 this.trackName = track.item.name
                 this.artist = track.item.artists[0].name
-                this.artwork = track.item.album.images[0].url
+                this.artwork = track.item.album.id == null ? null : track.item.album.images[0].url
                 this.progress = Math.floor(track.progress_ms / track.item.duration_ms * 100)
             })
         },
