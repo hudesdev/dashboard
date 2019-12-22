@@ -174,12 +174,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\CollectionServiceProvider::class,
         Spatie\LaravelTwitterStreamingApi\TwitterStreamingApiServiceProvider::class,
-        App\Services\GitHub\GitHubServiceProvider::class,
-        App\Services\Slack\SlackServiceProvider::class,
-        App\Services\Velo\VeloServiceProvider::class,
-        App\Services\Trains\IRailServiceProvider::class,
-        App\Services\Buienradar\BuienradarServiceProvider::class,
-        App\Services\Forecast\ForecastServiceProvider::class,
     ],
 
     /*
@@ -188,7 +182,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | This array of class aliases will be registered when this application
-    | is started. However, feel free to register as many as you wish as
+    | is started. Hoºver, feel free to register as many as you wish as
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
     */

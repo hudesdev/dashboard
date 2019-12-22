@@ -12,6 +12,10 @@
     grid-gap: var(--tile-padding);
 }
 
+.escape-padding {
+    margin: calc(var(--tile-padding) - var(--tile-padding) - var(--tile-padding));
+}
+
 .gap-0 {
     grid-gap: 0;
 }

@@ -28,7 +28,7 @@ class AuthServiceProvider extends ServiceProvider
                 return true;
             }
 
-            if (in_array($_SERVER['HTTP_X_FORWARDED_FOR'] ?? '', config('websockets.allowed_dashboard_ips'))) {
+            if (request()->input('access-token') === config('app.access_token')) {
                 return true;
             }
         });

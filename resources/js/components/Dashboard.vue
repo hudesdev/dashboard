@@ -16,19 +16,12 @@ export default {
 
     data() {
         return {
-            mode: 'light-mode',
+            mode: 'dark-mode',
         };
     },
 
     methods: {
-        getEventHandlers() {
-            return {
-                'Dashboard.UpdateAppearance': response => {
-                    this.mode = response.mode;
-                },
-            };
-        },
-
+        getEventHandlers: () => ({}),
         getSaveStateConfig() {
             return {
                 cacheKey: `dashboard`,

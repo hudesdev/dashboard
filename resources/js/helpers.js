@@ -17,14 +17,14 @@ export function formatDuration(start) {
     return moment.duration(moment().diff(start), 'milliseconds').format('d[d] h[h] m[m]');
 }
 
-export function withinWeek(value) {
+export function isToday(value) {
     const date = moment(value);
 
-    if (moment().diff(date, 'days') > -7) {
-        return true;
-    }
+    return moment().isSame(date, 'd')
+}
 
-    return false;
+export function isNow(startDate, endDate) {
+    return moment().isBetween(startDate, endDate)
 }
 
 export function relativeDate(value) {
@@ -87,6 +87,16 @@ export function diffInSeconds(otherMoment) {
     return moment().diff(otherMoment, 'seconds');
 }
 
-export function formatTime(value) {
-    return moment(value, 'X').format('HH:mm');
+export function formatTime(startDate, endDate, allDay) {
+    if (allDay) return
+
+    startDate = moment(startDate)
+    endDate = moment(endDate)
+
+    let formatted = `${startDate.format('hh:mm A')} - ${endDate.format('hh:mm A')}`;
+    if (moment().isSame(startDate, 'd') && moment().diff(startDate, 's') <= 0) {
+        formatted += ` (${startDate.fromNow()})`;
+    }
+
+    return formatted
 }

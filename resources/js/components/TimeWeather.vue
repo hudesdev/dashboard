@@ -7,29 +7,11 @@
             <div class="align-self-center font-bold text-4xl tracking-wide leading-none">{{ time }}</div>
             <div class="uppercase">
                 <div class="grid gap-4 items-center" style="grid-template-columns: repeat(3, auto);">
-                    <span> {{ weather.temperature }}° <span class="text-sm uppercase text-dimmed">out</span> </span>
-                    <span>
-                        <office-temperature />
-                        <span class="text-sm uppercase text-dimmed">in</span>
-                    </span>
-                    <span v-for="icon in weather.icons" class="text-2xl" v-html="icon"></span>
+                    <span> {{ weather.temperature }}°</span>
+                    <span v-for="(icon, index) in weather.icons" class="text-2xl" v-html="icon" :key="index"></span>
                 </div>
                 <div class="hidden">{{ weatherCity }}</div>
             </div>
-        </div>
-        <div
-            class="absolute pin-b pin-l w-full grid items-end"
-            style="
-                height: calc(1.25 * var(--tile-padding));
-                grid-gap: 1px;
-                grid-template-columns: repeat(12, 1fr);
-                opacity: .15"
-        >
-            <div
-                v-for="rainForecast in rainForecasts"
-                class="rounded-sm bg-accent"
-                :style="`height:${rainForecast.rain * 100}%`"
-            />
         </div>
     </tile>
 </template>
@@ -40,11 +22,9 @@ import echo from '../mixins/echo';
 import Tile from './atoms/Tile';
 import moment from 'moment-timezone';
 import weather from '../services/weather/Weather';
-import OfficeTemperature from './atoms/OfficeTemperature';
 
 export default {
     components: {
-        OfficeTemperature,
         Tile,
     },
 
@@ -76,9 +56,8 @@ export default {
             time: '',
             weather: {
                 temperature: '',
-                icons: [],
+                icon: 0,
             },
-            rainForecasts: [],
         };
     },
 
@@ -87,7 +66,7 @@ export default {
         setInterval(this.refreshTime, 1000);
 
         this.fetchWeather();
-        setInterval(this.fetchWeather, 15 * 60 * 1000);
+        setInterval(this.fetchWeather, 60000);
     },
 
     methods: {
@@ -103,15 +82,11 @@ export default {
         },
 
         getEventHandlers() {
-            return {
-                'Buienradar.ForecastsFetched': response => {
-                    this.rainForecasts = response.forecasts;
-                },
-            };
+            return {};
         },
 
         async fetchWeather() {
-            const condition = await weather.forCity(this.weatherCity);
+            const condition = await weather.forCoordinates(window.dashboard.openWeatherLat, window.dashboard.openWeatherLon);
 
             let icons = [];
 

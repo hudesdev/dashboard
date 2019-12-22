@@ -13,7 +13,7 @@
 .markup li {
     @apply flex justify-between items-baseline;
     @apply leading-tight;
-    @apply border-b-2 border-screen;
+    @apply border-b-2 border-accent;
     padding: 0.35rem 0;
 }
 

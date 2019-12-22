@@ -3,26 +3,24 @@
         <div class="grid gap-padding h-full markup">
             <ul class="align-self-center">
                 <li>
-                    <span v-html="emoji('✨')" />
-                    <span class="font-bold variant-tabular">{{ formatNumber(githubStars) }}</span>
+                    <span>Unique Visitors</span>
+                    <span class="font-bold variant-tabular">{{ formatNumber(uniqueVisitors) }}</span>
                 </li>
                 <li>
-                    <span>Contributors</span>
-                    <span class="font-bold variant-tabular">{{ formatNumber(githubContributors) }}</span>
+                    <span>Pageviews</span>
+                    <span class="font-bold variant-tabular">{{ formatNumber(pageviews) }}</span>
                 </li>
                 <li>
-                    <span>Issues</span> <span class="font-bold variant-tabular">{{ formatNumber(githubIssues) }}</span>
+                    <span>Average time on site</span>
+                    <span class="font-bold variant-tabular">{{ formatDuration(avgTime) }}</span>
                 </li>
                 <li>
-                    <span>Pull Requests</span>
-                    <span class="font-bold variant-tabular">{{ formatNumber(githubPullRequests) }}</span>
+                    <span>Bounce rate</span>
+                    <span class="font-bold variant-tabular">{{ formatPercentage(bounceRate) }}</span>
                 </li>
                 <li>
-                    <span>30 days</span>
-                    <span class="font-bold variant-tabular">{{ formatNumber(packagistMonthly) }}</span>
-                </li>
-                <li>
-                    <span>Total</span> <span class="font-bold variant-tabular">{{ formatNumber(packagistTotal) }}</span>
+                    <span>Current Visitors</span>
+                    <span class="font-bold variant-tabular">{{ formatNumber(currentVisitors) }}</span>
                 </li>
             </ul>
         </div>
@@ -46,13 +44,12 @@ export default {
 
     data() {
         return {
-            githubStars: 0,
-            githubIssues: 0,
-            githubPullRequests: 0,
-            githubContributors: 0,
-
-            packagistTotal: 0,
-            packagistMonthly: 0,
+            uniqueVisitors: 0,
+            pageviews: 0,
+            avgTime: 0,
+            bounceRate: 0,
+            currentVisitors: 0,
+            uniqueVisitors: 0,
         };
     },
 
@@ -60,18 +57,28 @@ export default {
         emoji,
         formatNumber,
 
+        formatDuration(sec) {
+            let min = Math.floor(sec / 60);
+            let seconds = sec - (min * 60);
+            seconds = Math.floor(Math.round(seconds * 100) / 100)
+
+            var result = (min < 10 ? "0" + min : min) + ':' + (seconds < 10 ? "0" + seconds : seconds);
+            return result;
+        },
+
+        formatPercentage(number) {
+            return number.toLocaleString("en", {style: "percent"})
+        },
+
         getEventHandlers() {
             return {
-                'Statistics.GitHubTotalsFetched': response => {
-                    this.githubStars = response.stars;
-                    this.githubIssues = response.issues;
-                    this.githubPullRequests = response.pullRequests;
-                    this.githubContributors = response.contributors;
-                },
-
-                'Statistics.PackagistTotalsFetched': response => {
-                    this.packagistTotal = response.total;
-                    this.packagistMonthly = response.monthly;
+                'Statistics.FathomTotalsFetched': response => {
+                    this.uniqueVisitors = response.uniqueVisitors;
+                    this.pageviews = response.pageviews;
+                    this.avgTime = response.avgTime;
+                    this.bounceRate = response.bounceRate;
+                    this.currentVisitors = response.currentVisitors;
+                    this.uniqueVisitors = response.uniqueVisitors;
                 },
             };
         },

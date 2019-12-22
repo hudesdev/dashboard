@@ -11,4 +11,9 @@ abstract class DashboardEvent implements ShouldBroadcast
     {
         return new PrivateChannel('dashboard');
     }
+
+    public static function dispatch(...$args)
+    {
+        event(new static(...$args));
+    }
 }

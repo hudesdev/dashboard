@@ -30,10 +30,6 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    'buienradar' => [
-        'latitude' => env('BUIENRADAR_LATITUDE'),
-        'longitude' => env('BUIENRADAR_LONGITUDE'),
-    ],
     'forecast' => [
         'account_id' => env('FORECAST_ACCOUNT_ID'),
         'token' => env('FORECAST_TOKEN'),
@@ -53,6 +49,8 @@ return [
 
     'open_weather_map' => [
         'key' => env('OPEN_WEATHER_MAP_KEY'),
+        'latitude' => env('OPEN_WEATHER_MAP_LATITUDE'),
+        'longitude' => env('OPEN_WEATHER_MAP_LONGITUDE'),
     ],
 
     'packagist' => [
@@ -61,30 +59,13 @@ return [
     'slack' => [
         'app_token' => env('SLACK_APP_TOKEN'),
     ],
-    'train_connections' => [
-        [
-            'departure' => 'Antwerpen-Centraal',
-            'destination' => 'Gent-Dampoort',
-            'label' => 'Gent'
-        ],
-        [
-            'departure' => 'Antwerpen-Centraal',
-            'destination' => 'Mechelen',
-            'label' => 'Mechelen',
-        ],
-        [
-            'departure' => 'Antwerpen-Centraal',
-            'destination' => 'Overpelt',
-            'label' => 'Overpelt',
-        ],
-        [
-            'departure' => 'Antwerpen-Luchtbal',
-            'destination' => 'Kapellen',
-            'label' => 'Kapellen',
-        ],
+    'spotify' => [
+        'id' => env('SPOTIFY_ID'),
+        'secret' => env('SPOTIFY_SECRET'),
     ],
-    'velo' => [
-        'stations' => explode(',', env('VELO_STATIONS')),
+    'ticktick' => [
+        'username' => env('TICKTICK_USER'),
+        'password' => env('TICKTICK_PASS'),
     ],
 
 ];

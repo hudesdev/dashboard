@@ -36,8 +36,16 @@ class Tweet {
         return this.tweetProperties.hasOwnProperty('retweeted_status');
     }
 
+    get isReply() {
+        return this.tweetProperties['in_reply_to_status_id_str'] && this.tweetProperties['in_reply_to_status_id_str'] != null;
+    }
+
     get hasQuote() {
         return this.tweetProperties['is_quote_status'] && this.tweetProperties['quoted_status'] !== null;
+    }
+
+    get repliedUser() {
+        return this.hasQuote ? this.tweetProperties['quoted_status'].user.screen_name : this.tweetProperties['in_reply_to_screen_name'];
     }
 
     get quote() {

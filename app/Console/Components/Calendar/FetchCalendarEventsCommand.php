@@ -18,13 +18,15 @@ class FetchCalendarEventsCommand extends Command
     {
         $this->info('Fetching calendar events...');
 
-        $events = collect(Event::get())
+        $events = collect(Event::get(today(), today()->addDays(2)))
             ->map(function (Event $event) {
                 $sortDate = $event->getSortDate();
 
                 return [
                     'name' => $event->name,
                     'date' => Carbon::createFromFormat('Y-m-d H:i:s', $sortDate)->format(DateTime::ATOM),
+                    'enddate' => Carbon::createFromDate($event->end->getDateTime())->format(DateTime::ATOM),
+                    'allDay' => $event->isAllDayEvent(),
                 ];
             })
             ->unique('name')

@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 class Weather {
-    async forCity(city) {
+    async forCoordinates(lat, lon) {
         const key = window.dashboard.openWeatherMapKey;
 
         const response = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`
+            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=metric`
         );
 
         return response.data;

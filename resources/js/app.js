@@ -7,13 +7,13 @@ import Dashboard from './components/Dashboard';
 import Calendar from './components/Calendar';
 import Statistics from './components/Statistics';
 import InternetConnection from './components/InternetConnection';
-import TeamMember from './components/TeamMember';
+import TaskList from './components/TaskList';
+import MRR from './components/MRR';
 import TimeWeather from './components/TimeWeather';
-import Trains from './components/Trains';
 import Twitter from './components/Twitter';
 import Uptime from './components/Uptime';
-import Velo from './components/Velo';
 import TileTimer from './components/TileTimer';
+import Music from './components/Music';
 
 new Vue({
     el: '#dashboard',
@@ -23,29 +23,20 @@ new Vue({
         Calendar,
         Statistics,
         InternetConnection,
-        TeamMember,
+        TaskList,
         TimeWeather,
-        Trains,
         Twitter,
         Uptime,
-        Velo,
+        Music,
         TileTimer,
+        mrr: MRR,
     },
 
     created() {
-        let config = {
+        this.echo = new Echo({
             broadcaster: 'pusher',
             key: window.dashboard.pusherKey,
-            wsHost: window.location.hostname,
-            wsPath: window.dashboard.clientConnectionPath,
-            wsPort: window.dashboard.wsPort,
             disableStats: true,
-        };
-
-        if (window.dashboard.environment === 'local') {
-            config.wsPort = 6001;
-        }
-
-        this.echo = new Echo(config);
+        });
     },
 });
