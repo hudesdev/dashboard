@@ -14,11 +14,8 @@ class VerifyCsrfToken extends BaseVerifier
     protected $addHttpCookie = true;
 
     protected $except = [
-        '/temperature',
-        '/webhook/github',
+        '/pingping',
         '/pusher/authenticate',
-        '/oh-dear-webhooks',
         '/broadcasting/auth',
-        '/laravel-websockets/auth',
     ];
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fdcc09d033e9dc95031ef9eabf469295",
+    "content-hash": "9b4e4065653c250cc111fb7744ea25ea",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -1467,16 +1467,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.5.1",
+            "version": "6.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "0274c05370a7bc9bb3a33838858253418bd7d14b"
+                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/0274c05370a7bc9bb3a33838858253418bd7d14b",
-                "reference": "0274c05370a7bc9bb3a33838858253418bd7d14b",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/43ece0e75098b7ecd8d13918293029e555a50f82",
+                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82",
                 "shasum": ""
             },
             "require": {
@@ -1530,7 +1530,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2019-12-21T08:51:15+00:00"
+            "time": "2019-12-23T11:57:10+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -2592,65 +2592,6 @@
                 "symfony"
             ],
             "time": "2019-03-07T21:35:13+00:00"
-        },
-        {
-            "name": "ohdearapp/laravel-ohdear-webhooks",
-            "version": "1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ohdearapp/laravel-ohdear-webhooks.git",
-                "reference": "35e82f732e586f5c4066a788e317c65f6697a771"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ohdearapp/laravel-ohdear-webhooks/zipball/35e82f732e586f5c4066a788e317c65f6697a771",
-                "reference": "35e82f732e586f5c4066a788e317c65f6697a771",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/http": "~5.8.0|^6.0",
-                "illuminate/routing": "~5.8.0|^6.0",
-                "illuminate/support": "~5.8.0|^6.0",
-                "php": "^7.2"
-            },
-            "require-dev": {
-                "orchestra/testbench": "~3.8.0|^4.0",
-                "phpunit/phpunit": "^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "OhDear\\LaravelWebhooks\\OhDearWebhooksServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "OhDear\\LaravelWebhooks\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "support@ohdear.app",
-                    "homepage": "https://ohdear.app",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Handle Oh Dear webhook calls in a Laravel app",
-            "homepage": "https://github.com/ohdear/laravel-ohdear-webhooks",
-            "keywords": [
-                "laravel-ohdear-webhooks",
-                "monitoring",
-                "ohdear",
-                "uptime"
-            ],
-            "time": "2019-09-04T11:05:17+00:00"
         },
         {
             "name": "opis/closure",
@@ -7079,16 +7020,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.10.0",
+            "version": "1.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "d638ebbb58daba25a6a0dc7969e1358a0e3c6682"
+                "reference": "cbe1df668b3fe136bcc909126a0f529a78d4cbbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/d638ebbb58daba25a6a0dc7969e1358a0e3c6682",
-                "reference": "d638ebbb58daba25a6a0dc7969e1358a0e3c6682",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/cbe1df668b3fe136bcc909126a0f529a78d4cbbc",
+                "reference": "cbe1df668b3fe136bcc909126a0f529a78d4cbbc",
                 "shasum": ""
             },
             "require": {
@@ -7138,7 +7079,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2019-12-17T16:54:23+00:00"
+            "time": "2019-12-22T21:05:45+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
