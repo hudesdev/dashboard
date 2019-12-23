@@ -1,7 +1,6 @@
 <template>
     <div
         class="fixed pin grid gap-spacing w-screen h-screen p-spacing font-normal leading-normal text-default bg-screen"
-        :class="mode"
     >
         <slot></slot>
     </div>
@@ -14,19 +13,15 @@ import saveState from 'vue-save-state';
 export default {
     mixins: [echo, saveState],
 
-    data() {
-        return {
-            mode: 'dark-mode',
-        };
-    },
-
     methods: {
-        getEventHandlers: () => ({}),
-        getSaveStateConfig() {
-            return {
-                cacheKey: `dashboard`,
-            };
-        },
+        getEventHandlers: () => ({
+            'Dashboard.Refresh': () => {
+                window.location.reload(true)
+            },
+        }),
+        getSaveStateConfig: () => ({
+            cacheKey: 'dashboard',
+        }),
     },
 };
 </script>
