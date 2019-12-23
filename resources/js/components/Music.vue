@@ -29,9 +29,9 @@ export default {
     data() {
         return {
             spotify: null,
-            artist: '',
-            trackName: '',
-            artwork: '',
+            artist: null,
+            trackName: null,
+            artwork: null,
             progress: 0,
         };
     },
@@ -57,6 +57,11 @@ export default {
     methods: {
         updateSong() {
             this.spotify.getMyCurrentPlayingTrack().then(track => {
+                if (track == '') {
+                    this.progress = 0
+                    return this.trackName = this.artist = this.artwork = null
+                }
+
                 this.trackName = track.item.name
                 this.artist = track.item.artists[0].name
                 this.artwork = track.item.album.id == null ? null : track.item.album.images[0].url
