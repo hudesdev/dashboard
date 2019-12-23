@@ -59,6 +59,9 @@ class Tweet {
             .map(media => media.url)
             .reduce((text, mediaUrl) => text.replace(mediaUrl, ''), text);
 
+        text = get(this.tweetProperties, 'entities.urls', [])
+            .reduce((text, url) => text.replace(url.url, url.display_url), text);
+
         if (this.tweetProperties.hasOwnProperty('display_text_range')) {
             text = substring(text, ...this.tweetProperties['display_text_range']);
         }
