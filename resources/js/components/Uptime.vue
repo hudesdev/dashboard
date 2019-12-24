@@ -1,10 +1,10 @@
 <template>
     <tile v-if="hasFailingUrls" :position="position" class="markup bg-warn">
         <div class="grid gap-padding h-full markup" style="grid-template-rows: auto 1fr">
-            <h1>Downtime</h1>
-            <ul class="align-self-center">
-                <li v-for="failing in failingUrls">
-                    <div class="font-bold truncate">{{ failing.url }}</div>
+            <h1 style="color: var(--text-default)">Downtime</h1>
+            <ul>
+                <li v-for="(failing, index) in failingUrls" :key="index">
+                    <div class="font-bold truncate">{{ failing.alias }}</div>
                 </li>
             </ul>
         </div>
@@ -45,13 +45,10 @@ export default {
         getEventHandlers() {
             return {
                 'Uptime.UptimeCheckFailed': response => {
-                    this.add(response.url);
+                    this.add(response.site);
                 },
                 'Uptime.UptimeCheckRecovered': response => {
-                    this.remove(response.url);
-                },
-                'Uptime.UptimeCheckSucceeded': response => {
-                    this.remove(response.url);
+                    this.remove(response.site);
                 },
                 'Uptime.ClearingUptimeChecks': () => {
                     this.clear();
@@ -59,17 +56,17 @@ export default {
             };
         },
 
-        add(url) {
-            this.failingUrls = this.failingUrls.filter(failingUrl => url !== failingUrl.url);
+        add(site) {
+            this.failingUrls = this.failingUrls.filter(failingUrl => site.url !== failingUrl.url);
 
-            this.failingUrls.push({ url });
+            this.failingUrls.push(site);
         },
 
-        remove(url) {
-            this.failingUrls = this.failingUrls.filter(failingUrl => url !== failingUrl.url);
+        remove(site) {
+            this.failingUrls = this.failingUrls.filter(failingUrl => site.url !== failingUrl.url);
         },
 
-        clear(){
+        clear() {
             this.failingUrls = []
         }
     },

@@ -6,16 +6,11 @@ use App\Events\DashboardEvent;
 
 class UptimeCheckRecovered extends DashboardEvent
 {
-    /** @var int */
-    public $id;
+    /** @var array */
+    public $site;
 
-    /** @var string */
-    public $url;
-
-    public function __construct(int $siteId, string $siteUrl)
+    public function __construct(array $site)
     {
-        $this->id = $siteId;
-
-        $this->url = $siteUrl;
+        $this->site = $site;
     }
 }

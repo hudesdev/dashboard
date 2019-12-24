@@ -12,7 +12,7 @@
         <music position="b17:d24"></music>
         <mrr position="d1:d8"></mrr>
         <statistics position="d9:d16"></statistics>
-        <uptime position="d1:d10"></uptime>
+        <uptime position="a1:a24"></uptime>
         <calendar position="e1:e24"></calendar>
     </dashboard>
 </div>
