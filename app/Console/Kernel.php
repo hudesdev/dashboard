@@ -3,13 +3,15 @@
 namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
+use App\Console\Components\Statistics\FetchMRR;
 use App\Console\Components\TickTick\FetchTasksCommand;
 use App\Console\Components\Dashboard\SendHeartbeatCommand;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use App\Console\Components\Calendar\FetchCalendarEventsCommand;
+use App\Console\Components\Google\RefreshGoogleTokenCommand;
 use App\Console\Components\Spotify\RefreshSpotifyTokenCommand;
+use App\Console\Components\Calendar\FetchCalendarEventsCommand;
+use App\Console\Components\Google\FetchStepCountCommand;
 use App\Console\Components\Statistics\FetchFathomTotalsCommand;
-use App\Console\Components\Statistics\FetchMRR;
 
 class Kernel extends ConsoleKernel
 {
@@ -19,8 +21,10 @@ class Kernel extends ConsoleKernel
         $schedule->command(FetchCalendarEventsCommand::class)->everyMinute();
         $schedule->command(FetchTasksCommand::class)->everyMinute();
         $schedule->command(FetchFathomTotalsCommand::class)->everyMinute();
+        $schedule->command(FetchStepCountCommand::class)->everyMinute();
         $schedule->command(FetchMRR::class)->everyFifteenMinutes();
         $schedule->command(RefreshSpotifyTokenCommand::class)->everyThirtyMinutes();
+        $schedule->command(RefreshGoogleTokenCommand::class)->everyThirtyMinutes();
         $schedule->command('websockets:clean')->daily();
     }
 

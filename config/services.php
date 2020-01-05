@@ -63,6 +63,10 @@ return [
         'id' => env('SPOTIFY_ID'),
         'secret' => env('SPOTIFY_SECRET'),
     ],
+    'google' => [
+        'id' => env('GOOGLE_ID'),
+        'secret' => env('GOOGLE_SECRET'),
+    ],
     'ticktick' => [
         'username' => env('TICKTICK_USER'),
         'password' => env('TICKTICK_PASS'),

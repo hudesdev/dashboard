@@ -6,7 +6,8 @@
 <div id="dashboard">
     <dashboard class="font-sans">
         <twitter :initial-tweets="{{ json_encode($initialTweets) }}" position="a1:a24"></twitter>
-        <time-weather position="b1:c8" date-format="ddd DD MMM" time-format="hh:mm A" time-zone="Europe/Madrid" weather-city="Oviedo" time-format="h:mm:ss a"></time-weather>
+        <time-weather position="b1:b8" date-format="ddd DD MMM" time-format="hh:mm A" time-zone="Europe/Madrid" weather-city="Oviedo" time-format="h:mm:ss a"></time-weather>
+        <fitness position="c1:c8"></fitness>
         <internet-connection position="b1:c8"></internet-connection>
         <task-list position="b9:c16"></task-list>
         <music position="b17:d24"></music>

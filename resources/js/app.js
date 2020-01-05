@@ -9,6 +9,7 @@ import Statistics from './components/Statistics';
 import InternetConnection from './components/InternetConnection';
 import TaskList from './components/TaskList';
 import MRR from './components/MRR';
+import Fitness from './components/Fitness';
 import TimeWeather from './components/TimeWeather';
 import Twitter from './components/Twitter';
 import Uptime from './components/Uptime';
@@ -29,6 +30,7 @@ new Vue({
         Uptime,
         Music,
         TileTimer,
+        Fitness,
         mrr: MRR,
     },
 
