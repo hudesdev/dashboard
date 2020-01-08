@@ -29,7 +29,6 @@ class FetchCalendarEventsCommand extends Command
                     'allDay' => $event->isAllDayEvent(),
                 ];
             })
-            ->unique('name')
             ->toArray();
 
         event(new EventsFetched($events));
