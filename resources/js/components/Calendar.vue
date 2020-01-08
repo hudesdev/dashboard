@@ -65,7 +65,7 @@ export default {
         getEventHandlers() {
             return {
                 'Calendar.EventsFetched': response => {
-                    this.events = response.events;
+                    this.events = Object.values(response.events)
                 },
             };
         },
