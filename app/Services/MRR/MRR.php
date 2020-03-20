@@ -30,6 +30,6 @@ class MRR
 
     public function getGitHubMRR()
     {
-        return collect(Zttp::withHeaders(['Authorization' => 'Bearer '.config('services.github.token')])->post('https://api.github.com/graphql', ['query' => '{ viewer { sponsorsListing { tiers(first: 100) { nodes { adminInfo { sponsorships(first: 100, includePrivate: true) { nodes { tier { monthlyPriceInCents } } } } } } } } }'])->json())->flatten()->sum();
+        return collect(Zttp::withHeaders(['Authorization' => 'Bearer '.config('services.github.token')])->post('https://api.github.com/graphql', ['query' => '{ viewer { sponsorsListing { tiers(first: 100) { nodes { adminInfo { sponsorships(first: 100, includePrivate: true) { nodes { tier { monthlyPriceInCents } } } } } } } } }'])->json())->flatten()->sum() / 1000;
     }
 }
