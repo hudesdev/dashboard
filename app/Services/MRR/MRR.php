@@ -12,8 +12,9 @@ class MRR
             'sources' => [
                 'sitesauce' => $sitesauce = $this->getSitesauceMRR(),
                 'patreon' => $patreon = $this->getPatreonMRR(),
+                'github' => $github = $this->getGitHubMRR(),
             ],
-            'total' => $sitesauce + $patreon,
+            'total' => $sitesauce + $patreon + $github,
         ];
     }
 
@@ -25,5 +26,10 @@ class MRR
     public function getPatreonMRR()
     {
         return Zttp::get('https://www.patreon.com/api/campaigns/1538972')->json()['data']['attributes']['pledge_sum'] / 100;
+    }
+
+    public function getGitHubMRR()
+    {
+        return collect(Zttp::withHeaders(['Authorization' => 'Bearer '.config('services.github.token')])->post('https://api.github.com/graphql', ['query' => '{ viewer { sponsorsListing { tiers(first: 100) { nodes { adminInfo { sponsorships(first: 100, includePrivate: true) { nodes { tier { monthlyPriceInCents } } } } } } } } }'])->json())->flatten()->sum();
     }
 }
